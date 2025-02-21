@@ -37,4 +37,17 @@ public class StudentController {
         studentService.delete(id);
         return "redirect:/";
     }
+
+    @GetMapping("/edit/{id}")
+    String edit(@PathVariable("id") int id, Model model) {
+        Student student = studentService.getById(id);
+        model.addAttribute("student", student);
+        return "edit"; // Переход на страницу редактирования
+    }
+
+    @PostMapping("/update")
+    String update(@ModelAttribute Student updatedStudent) {
+        studentService.update(updatedStudent);
+        return "redirect:/";
+    }
 }

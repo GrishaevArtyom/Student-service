@@ -22,4 +22,12 @@ public class StudentService {
         studentRepository.delete(student);
     }
 
+    public Student getById(int id) {
+        return studentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id: " + id));
+    }
+
+    public void update(Student updatedStudent) {
+        studentRepository.save(updatedStudent);
+    }
 }

@@ -1,5 +1,9 @@
 td{
 color: black;
-background: white;
-font-size: 40px;
+background: lightblue;
+}
+
+body{
+    background-color: lightgray;
+    font-size: 30px;
 }

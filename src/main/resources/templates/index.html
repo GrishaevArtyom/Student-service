@@ -3,41 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="./static/mystyle.css"/>
+    <link rel="stylesheet" href="/mystyle.css"/>
 </head>
 <body>
-Таблица(Имя, возраст)
-
-<!--<table>-->
-<!--    <tr th:each="row:${rows}">-->
-<!--        <td th:each="field:${row}" th:text="${field.id}"/>-->
-<!--        <td th:each="field:${row}" th:text="${field.name}"/>-->
-<!--        <td th:each="field:${row}" th:text="${field.age}"/>-->
-<!--        <td><a th:href="@{/delete/{id}(id=${row.id})}">Delete</a></td>&ndash;&gt;-->
-<!--    </tr>-->
-<!--</table>-->
-
-<!--<table>-->
-<!--    <tr th:each="student:${students}">-->
-<!--        <td th:text="${student.id}"></td>-->
-<!--        <td th:text="${student.name}"></td>-->
-<!--        <td><a th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>-->
-<!--    </tr>-->
-<!--</table>-->
+Таблица студентов (Имя, возраст)
 
     <table>
         <tr th:each="row:${rows}">
             <td th:text="${row.id}"/>
             <td th:text="${row.name}"/>
             <td th:text="${row.age}"/>
-            <td><a th:href="@{/delete/{id}(id=${row.id})}">Delete</a></td>
+            <td>
+                <a th:href="@{/delete/{id}(id=${row.id})}">Delete</a>
+                <a th:href="@{/edit/{id}(id=${row.id})}">Edit</a>
+            </td>
         </tr>
     </table>
-
-<!--    <form method="post" th:action="@{/add}" th:object="${new_student}">-->
-<!--        <input type="text" th:field="*{name}"/>-->
-<!--        <button type="submit">Add</button>-->
-<!--    </form>-->
 
 <form method="post" th:action="@{/add}" th:object="${new_student}">
     <label for="name">Name:</label>
