@@ -15,7 +15,7 @@
             <td th:text="${row.age}"/>
             <td>
                 <a th:href="@{/delete/{id}(id=${row.id})}">Delete</a>
-                <a th:href="@{/edit/{id}(id=${row.id})}">Edit</a>
+                <a th:href="@{/update/{id}(id=${row.id})}">Edit</a>
             </td>
         </tr>
     </table>

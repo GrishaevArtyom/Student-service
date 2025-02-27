@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="/mystyle.css"/>
+</head>
+<body>
+Редактирование информации о студенте
+
+<form method="post" th:action="@{/update/{id}(id=${student.id})}" th:object="${student}">
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}"/>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" th:field="*{age}"/>
+
+    <button type="submit">Update</button>
+</form>
+
+<a href="/">Вернуться к списку</a>
+</body>
+</html>

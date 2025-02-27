@@ -10,15 +10,17 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    public List<Student> getAll(){
+    public List<Student> getAll() {
         return studentRepository.findAll();
     }
 
-    void save(Student student){studentRepository.save(student);}
+    void save(Student student) {
+        studentRepository.save(student);
+    }
 
-    void delete(int id){
+    void delete(int id) {
         Student student = studentRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("Invalid user Id: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id: " + id));
         studentRepository.delete(student);
     }
 
@@ -27,7 +29,11 @@ public class StudentService {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id: " + id));
     }
 
-    public void update(Student updatedStudent) {
-        studentRepository.save(updatedStudent);
+    void update(int id, Student updatedStudent) {
+        Student student = studentRepository.findById(id).
+                orElseThrow(() -> new IllegalArgumentException("Invalid user Id: " + id));
+        student.setName(updatedStudent.getName());
+        student.setAge(updatedStudent.getAge());
+        studentRepository.save(student);
     }
 }

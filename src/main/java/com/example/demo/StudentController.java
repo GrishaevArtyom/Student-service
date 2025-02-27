@@ -16,13 +16,8 @@ public class StudentController {
 
     @GetMapping("/")
     public String index(Model model){
-
-//        model.addAttribute("rows", studentService.getAll());
-
         model.addAttribute("rows", studentService.getAll());
         model.addAttribute("new_student", new Student());
-
-
         return "index";
     }
 
@@ -38,16 +33,16 @@ public class StudentController {
         return "redirect:/";
     }
 
-    @GetMapping("/edit/{id}")
-    String edit(@PathVariable("id") int id, Model model) {
+    @GetMapping("/update/{id}")
+    String update(@PathVariable("id") int id, Model model) {
         Student student = studentService.getById(id);
-        model.addAttribute("student", student);
-        return "edit"; // Переход на страницу редактирования
+        model.addAttribute("student", studentService.getById(id));
+        return "update";
     }
 
-    @PostMapping("/update")
-    String update(@ModelAttribute Student updatedStudent) {
-        studentService.update(updatedStudent);
+    @PostMapping("/update/{id}")
+    String update(@PathVariable("id") int id, @ModelAttribute Student updatedStudent) {
+        studentService.update(id, updatedStudent);
         return "redirect:/";
     }
 }
