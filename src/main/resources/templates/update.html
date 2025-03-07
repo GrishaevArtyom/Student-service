@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/mystyle.css"/>
 </head>
 <body>
+
 Редактирование информации о студенте
 
 <form method="post" th:action="@{/update/{id}(id=${student.id})}" th:object="${student}">
